@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Color Change</title>
+  <style>
+    #colorBox {
+      width: 100px;
+      height: 100px;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <label>
+    <input type="checkbox" id="changeColorCheckbox"> Change color
+  </label>
+  
+  <div id="colorBox"></div>
+  
+  <script>
+    const checkbox = document.getElementById('changeColorCheckbox');
+    const colorBox = document.getElementById('colorBox');
+
+    checkbox.addEventListener('change', function() {
+      if (checkbox.checked) {
+        colorBox.style.backgroundColor = 'lightblue';
+      } else {
+        colorBox.style.backgroundColor = 'lightgray';
+      }
+    });
+  </script>
+</body>
+</html>
