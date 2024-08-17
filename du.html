@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Layout Container</title>
+  <style>
+    .custom-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .custom-layout-item {
+      background: #ccc;
+      padding: 20px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="layout-container" class="custom-layout"></div>
+
+<script>
+  class CustomLayoutContainer {
+    constructor(container) {
+      this.container = container;
+      this.items = [];
+    }
+
+    addItem(element) {
+      element.classList.add('custom-layout-item');
+      this.container.appendChild(element);
+      this.items.push(element);
+    }
+
+    removeItem(element) {
+      this.container.removeChild(element);
+      this.items = this.items.filter(item => item !== element);
+    }
+
+    clearItems() {
+      this.items.forEach(item => this.container.removeChild(item));
+      this.items = [];
+    }
+
+    // Example method to refresh layout
+    refreshLayout() {
+      // Custom logic to reposition items if needed
+      console.log('Refreshing layout with', this.items.length, 'items.');
+    }
+  }
+
+  // Usage
+  const layoutContainerElement = document.getElementById('layout-container');
+  const customLayout = new CustomLayoutContainer(layoutContainerElement);
+
+  // Adding some items
+  for (let i = 0; i < 5; i++) {
+    const item = document.createElement('div');
+    item.textContent = `Item ${i + 1}`;
+    customLayout.addItem(item);
+  }
+
+  // Refresh layout (if necessary)
+  customLayout.refreshLayout();
+</script>
+
+</body>
+</html>
